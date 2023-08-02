@@ -1,0 +1,427 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@mixin mobile {
+  @media (max-width:1000px){
+      @content;
+  }
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "poppins";
+  
+}
+
+
+/* header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  /* grabient.com */
+  background-image: linear-gradient(45deg, #ffdee9 0%, #b5fffc 100%);
+
+  .buttons {
+    display: flex;
+    align-items: center !important;
+  }
+
+  h1 {
+    text-shadow: 0 0 30px #b5fffc;
+  }
+
+  input {
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  div {
+    display: flex;
+    gap: 20px;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      color: white;
+
+      &:nth-child(2) {
+        background: black;
+      }
+
+      &:nth-child(3) {
+        background: blue;
+      }
+
+      &:nth-child(4) {
+        background: red;
+      }
+    }
+  }
+}
+
+/* kategoriler */
+
+section {
+  padding: 50px;
+  h1{
+    text-align: start !important;
+  }
+
+  .categories {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 40px;
+
+    .category-card {
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-shadow: 0 0 30px rgba(20, 20, 20, 0.231);
+      border-radius: 10px;
+
+      img {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      p {
+        position: absolute;
+        bottom: 10px;
+        background: white;
+        width: 70%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 600;
+        box-shadow: 2px 2px 10px black;
+      }
+    }
+  }
+}
+
+/* ürünler kısmı */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 120px;
+  margin-top: 40px;
+  
+
+  @media (max-width: 1100px) {
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .card {
+    max-width: 250px;
+    max-height: 500px;
+    min-height: 380px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    position: relative;
+    
+    /*  https://getcssscan.com/css-box-shadow-examples*/
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+      rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+      rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .action {
+      width: 100%;
+      padding: 7px;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      background: black;
+      border-radius: 10px;
+      align-items: center;
+      position: absolute;
+      bottom: 2px;
+      width: 98%;
+      margin: 0 auto;
+
+      span {
+        color: greenyellow;
+      }
+
+      button {
+        background-image: linear-gradient(180deg, #a9c9ff 0%, #ffbbec 100%);
+        border-radius: 4px;
+        color: white;
+        padding: 5px;
+        border: none;
+        font-family: "poppins";
+        font-weight: 600;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.521);
+        cursor: pointer;
+        transition: scale 300ms;
+
+        &:hover {
+          scale: 0.96;
+        }
+      }
+    }
+  }
+}
+
+/* sepet */
+.modal-wrapper {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(128, 128, 128, 0.4);
+  display: none;
+  place-items: center;
+
+  &.active {
+    display: grid;
+  }
+
+  .modal {
+    background: white;
+    width: 70%;
+    height: 60%;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    #icon {
+      display: flex;
+      justify-content: end;
+
+      img {
+        width: 40px;
+        cursor: pointer;
+        transition: all 0.4s;
+
+        &:hover {
+          scale: 0.87;
+        }
+      }
+    }
+
+    #list {
+      display: flex;
+      flex-direction: column;
+      /* butun alanı kapşamasını saglar */
+      flex-grow: 1;
+      /* elemanlar sınırın dısına cıkarsa scroll ekle */
+      overflow: auto;
+      gap: 30px;
+      padding: 14px;
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+        img {
+          width: 60px;
+          border-radius: 7px;
+        }
+
+        .price {
+          color: green;
+        }
+
+        #delete {
+          width: 30px;
+          cursor: pointer;
+          transition: all 0.4s;
+
+          &:hover {
+            transform: rotate(15deg);
+          }
+        }
+      }
+
+      #total {
+        text-align: center;
+
+        span {
+          color: rgb(0, 203, 0);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+//! Register Section CSS START
+
+.registers{
+  width: 80%;
+  height: 80vh;
+  position: fixed;
+  top: 35%;
+  left: 40%;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  display: none;
+  @include mobile{
+    top: 25%;
+  left: 25%;
+  }
+
+  
+
+  #register-sec{
+    background: white;
+    width: 500px;
+    height: 60%;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    
+  }
+
+  #register-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+    input{
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
+    button{
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      &:hover{
+        background-color: blueviolet;
+      }
+    }
+  }
+}
+
+//! Register Section CSS END
+
+
+//! The slider 
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #9fccfa;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+//! toggle ball
+.toggle-btn {
+  width: 40px;
+  height: 20px;
+  background: #d3d3d3;
+  border-radius: 50px;
+  cursor: pointer;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+}
+
+.dark-mode .toggle-btn {
+  background: #333;
+  transition: all 0.2s;
+  &::after {
+    transform: translateX(20px);
+    transition: all 0.2s;
+  }
+}
+
+
+.dark-mode{
+  .registers{
+    #register-sec{
+      background-color: rgb(48, 46, 46);
+      input{
+        outline: none;
+      }
+    }
+   
+  }
+  h1{
+    color: white;
+    text-align: center;
+  }
+  header{
+    background: black;
+    color: white;
+    transition: all .3s;
+  
+    
+  }
+  header div button:nth-child(2) {
+    background: white;
+    color: black;
+    transition: all .3s;
+  }
+  main{
+    background: rgba(0, 0, 0, 0.959);
+    transition: all .3s;
+  }
+  .card{
+    box-shadow: 0 0 30px rgba(238, 232, 232, 0.231);
+    .action{
+      background: white;
+      
+    }
+    span{
+      color: rgb(11, 15, 3) !important;
+      font-weight: 600;
+    }
+    h4{
+      color: white;
+    }
+  }
+}
+
