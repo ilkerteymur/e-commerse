@@ -1,18 +1,24 @@
-# E-Ticaret
+# E-Ticaret (Animation and Full Resposive)
+
+## What i practice
+
+- Fetch API
+- Dark-light Mode
+- Rendering prodcuts
+- Used HTML SCSS JS for Design
+- Full Responsive
+- Animation
+
+## `URL`
+
+https://ornate-croissant-038d9d.netlify.app/
+
+## `Screen`
+
+![](screen.gif)
 
 # Kaynaklar
 -Api: https://fakeapi.platzi.com/
-
-# Yapılacaklar
-
-- Statik bir header oluştur
-
-- API'dan kategori bilgisini al ve ekrana bas
-- - sayfa yüklendiği anda istek at
-- - `categories` uç noktasına istek at ve cevabı al
-- - gelen cevaptaki her bir kategori için ekrana bir kategori kartı bas
-
-
 
 
 # FETCH NOTLARI
